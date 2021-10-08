@@ -358,7 +358,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     .select(
       `
     *,
-    users: user_id ( name ),
+    users: creator_id ( name ),
     courses: course_id ( id )
     `
     )
