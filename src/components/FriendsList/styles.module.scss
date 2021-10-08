@@ -1,0 +1,57 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.friendCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background-color: var(--Purple2);
+
+  padding: 1rem;
+
+  border-radius: 16px;
+
+  cursor: pointer;
+
+  transition: filter 300ms;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+
+  .friendInfo {
+    display: flex;
+    align-items: center;
+
+    padding: 0.6rem;
+
+    color: var(--White);
+
+    height: 4rem;
+
+    img {
+      height: 4rem;
+      border-radius: 100%;
+    }
+
+    h2 {
+      margin: 1rem;
+    }
+  }
+
+  p {
+    margin-top: 0.2rem;
+    border-left: solid 1px;
+    color: var(--MainPurple);
+    padding: 0.3rem 0.6rem;
+    margin-left: 0.6rem;
+
+    align-items: center;
+
+    font-size: 1.1rem;
+  }
+}

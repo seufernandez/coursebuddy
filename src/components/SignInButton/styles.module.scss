@@ -1,0 +1,73 @@
+.signInButton {
+  height: 3rem;
+  border-radius: 16px;
+  background-color: var(--MainGreenTransparent);
+  border: none;
+
+  color: var(--White);
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: 2rem;
+  padding: 1rem;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  svg:first-child {
+    margin-right: 1rem;
+  }
+
+  svg.closeIcon {
+    margin-left: 1rem;
+    stroke: var(--MainGreen);
+    filter: brightness(0.8);
+  }
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+  transition: 200ms;
+}
+
+.signInButtonLogged {
+  height: 3rem;
+  border-radius: 16px;
+  background-color: var(--Purple3);
+  border: none;
+
+  color: var(--White);
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: 2rem;
+  padding: 1rem;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  svg:first-child {
+    margin-right: 1rem;
+  }
+
+  svg.closeIcon {
+    margin-left: 1rem;
+    stroke: var(--MainPurple);
+    filter: brightness(0.8);
+  }
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+  transition: 200ms;
+}

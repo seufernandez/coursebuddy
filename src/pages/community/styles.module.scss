@@ -1,0 +1,45 @@
+.main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: calc(100vh - 6rem);
+
+  .topText {
+    display: flex;
+    align-items: baseline;
+
+    margin-top: 2rem;
+
+    @media (max-width: 520px) {
+      margin-top: 1rem;
+      margin-bottom: 0.75rem;
+
+      > img {
+        height: 2.2rem;
+      }
+
+      > h1 {
+        margin-left: 0.5rem;
+        font-weight: bold;
+        font-size: 2.9rem;
+      }
+    }
+
+    > img {
+      height: 2.2rem;
+    }
+
+    > h1 {
+      margin-left: 0.5rem;
+      font-weight: bold;
+      font-size: 2.9rem;
+    }
+  }
+
+  h1 {
+    margin: 8px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: -0.017em;
+  }
+}

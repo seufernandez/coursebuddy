@@ -1,0 +1,111 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, Inter, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  margin: 0;
+
+  box-sizing: border-box;
+}
+:root {
+  --Purple1BC: #15081c;
+  --Purple2: #2d0d32;
+  --Purple3: #3b1348;
+  --Purple4: #531c66;
+  --MainPurple: #ba68c8;
+  --DeepPurple: #9e00ff;
+
+  --MainGreen: #00ff9d;
+  --SecondaryGreen: #00df8a;
+  --GreenBC: #003f27;
+
+  --MainGreenTransparent: #00ff9d51;
+
+  --white: #ffffff;
+
+  --grey1: #e1e1e6;
+  --grey5: #828282;
+  --grey7: #595959;
+  --grey8: #3a3535;
+  --grey9: #333333;
+  --grey10: #232020;
+
+  --cyan5: #61dafb;
+
+  --green1: #51ee38;
+  --green5: #21b30b;
+  --green10: #258f14;
+
+  --weakGreen: #248f1429;
+
+  --pastelOrange: #eba83a;
+  --Orange1: #ff7315;
+}
+
+body {
+  background-color: var(--Purple1BC);
+  color: var(--white);
+}
+
+body,
+input,
+textarea,
+select,
+button {
+  font-family: 'Inter', sans-serif;
+  font: 400 1rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 0.5;
+  }
+  60% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 0.5;
+  }
+  60% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+  }
+}

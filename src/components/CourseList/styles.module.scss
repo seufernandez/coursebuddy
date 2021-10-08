@@ -1,0 +1,10 @@
+.courseCard {
+  transition: transform 300ms;
+
+  animation-name: fadeIn;
+  animation-duration: 0.3s;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
