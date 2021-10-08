@@ -53,20 +53,20 @@ type CreateResumeData = {
 const createResumeFormSchema = yup.object().shape({
   name: yup
     .string()
-    .max(120, 'O nome só pode ter no máximo 120 caracteres')
-    .required('Opa, não se esqueça de colocar um nome!'),
+    .max(120, 'Maximum 120 characters')
+    .required('Wait, you would not forget the name would you?'),
   description: yup
     .string()
-    .max(200, 'A descrição só pode ter no máximo 200 caracteres')
-    .required('Não se esqueça de colocar uma descrição!'),
+    .max(200, 'Maximum 200 characters')
+    .required(`Don't forget the description`),
   image: yup.string().url(),
-  link: yup.string().url().required('Não se esqueça do Link!'),
+  link: yup.string().url().required('Material link required'),
   tags: yup
     .string()
     .lowercase()
-    .min(3, 'Precisamos de no mínimo 3 caracteres ')
-    .max(144, 'As tags o só pode ter no máximo 120 caracteres')
-    .required('Tags são importantes para estudantes encontrarem o curso'),
+    .min(3, 'Come on, at least 3 characters you can do it')
+    .max(144, 'Maximum 144 characters')
+    .required('Tags are important to help others to find the course :)'),
 });
 
 export default function CoursePage({
@@ -327,7 +327,7 @@ export default function CoursePage({
       >
         <ModalOverlay />
         <ModalContent bg="purple.800">
-          <ModalHeader>Novo Resumo</ModalHeader>
+          <ModalHeader>New Resume</ModalHeader>
           <ModalBody>
             <FormControl>
               <Box
@@ -342,8 +342,8 @@ export default function CoursePage({
                 <VStack spacing="4">
                   <Input
                     name="name"
-                    label="Nome"
-                    description="Ex: UFMG História Bach. 3 Período -HISTÓRIA DO BRASIL II-"
+                    label="Name"
+                    description="Ex: What I learnt on 'Computer Science' at MIT..."
                     descriptionColor="purple.300"
                     focusBorderColor="purple.600"
                     bg="purple.600"
@@ -357,7 +357,7 @@ export default function CoursePage({
 
                   <Input
                     name="description"
-                    label="Descrição"
+                    label="Description"
                     focusBorderColor="purple.600"
                     bg="purple.600"
                     variant="filled"
@@ -370,8 +370,8 @@ export default function CoursePage({
 
                   <Input
                     name="image"
-                    label="URL da Imagem"
-                    description="(Opcional)"
+                    label="Image URL"
+                    description="(optional)"
                     descriptionColor="purple.300"
                     focusBorderColor="purple.600"
                     bg="purple.600"
@@ -385,7 +385,7 @@ export default function CoursePage({
 
                   <Input
                     name="link"
-                    label="Link do Resumo"
+                    label="Resume Link"
                     description="Ex: GDrive, Notion etc..."
                     descriptionColor="purple.300"
                     focusBorderColor="purple.600"
@@ -401,8 +401,8 @@ export default function CoursePage({
                   <Box w="100%" justify="flex-initial">
                     <Input
                       name="tags"
-                      label="Tags (3 a 6, separadas por vírgula)"
-                      description="Ex: ufmg, historia, bacharelado, 3 periodo"
+                      label="Tags"
+                      description="Ex: mit, undergraduate degree, computer science"
                       descriptionColor="purple.300"
                       focusBorderColor="purple.600"
                       bg="purple.600"
@@ -425,7 +425,7 @@ export default function CoursePage({
               variant="ghost"
               onClick={onClose}
             >
-              Voltar
+              Close
             </Button>
             <Button
               type="submit"
@@ -437,7 +437,7 @@ export default function CoursePage({
               isLoading={formState.isSubmitting}
               onClick={handleSubmit(handleCreateResume)}
             >
-              Criar
+              Create
             </Button>
           </ModalFooter>
         </ModalContent>

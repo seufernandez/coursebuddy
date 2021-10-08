@@ -44,19 +44,19 @@ type CreateCourseData = {
 const createCourseFormSchema = yup.object().shape({
   name: yup
     .string()
-    .max(120, 'O nome só pode ter no máximo 120 caracteres')
-    .required('Opa, não se esqueça de colocar um nome!'),
+    .max(120, 'Maximum 120 characters')
+    .required('Wait, you would not forget the name would you?'),
   description: yup
     .string()
-    .max(144, 'A descrição só pode ter no máximo 144 caracteres')
-    .required('Não se esqueça de colocar uma descrição!'),
+    .max(200, 'Maximum 200 characters')
+    .required(`Don't forget the description`),
   image: yup.string().url(),
   tags: yup
     .string()
     .lowercase()
-    .min(3, 'Precisamos de no mínimo 3 caracteres ')
-    .max(144, 'A descrição só pode ter no máximo 120 caracteres')
-    .required('Tags são importantes para estudantes encontrarem o curso'),
+    .min(3, 'Come on, at least 3 characters you can do it')
+    .max(144, 'Maximum 144 characters')
+    .required('Tags are important to help others to find the course :)'),
 });
 
 export default function Community({ currentUserData }) {
@@ -107,7 +107,7 @@ export default function Community({ currentUserData }) {
   return (
     <>
       <Head>
-        <title>Comunidade | CourseBuddy</title>
+        <title>Community | CourseBuddy</title>
       </Head>
 
       <div className={styles.main}>
@@ -165,7 +165,7 @@ export default function Community({ currentUserData }) {
       >
         <ModalOverlay />
         <ModalContent bg="green.900">
-          <ModalHeader>Novo Curso</ModalHeader>
+          <ModalHeader>New Course</ModalHeader>
           <ModalBody>
             <FormControl>
               <Box
@@ -180,8 +180,8 @@ export default function Community({ currentUserData }) {
                 <VStack spacing="4">
                   <Input
                     name="name"
-                    label="Nome do Curso"
-                    description="Ex: UFMG História Bach. 3 Período -HISTÓRIA DO BRASIL II-"
+                    label="Course Name"
+                    description="Ex: MIT | Undergraduate Degree | Computer Science "
                     descriptionColor="green.300"
                     focusBorderColor="green.600"
                     bg="green.700"
@@ -195,7 +195,7 @@ export default function Community({ currentUserData }) {
 
                   <Input
                     name="description"
-                    label="Descrição do Curso"
+                    label="Course Description"
                     focusBorderColor="green.600"
                     bg="green.700"
                     variant="filled"
@@ -208,7 +208,7 @@ export default function Community({ currentUserData }) {
 
                   <Input
                     name="image"
-                    label="Cole aqui a URL da Imagem"
+                    label="Paste here the image URL"
                     focusBorderColor="green.600"
                     bg="green.700"
                     variant="filled"
@@ -222,8 +222,8 @@ export default function Community({ currentUserData }) {
                   <Box w="100%" justify="flex-initial">
                     <Input
                       name="tags"
-                      label="Tags (3 a 6 separadas por vírgula)"
-                      description="Ex: ufmg, historia, bacharelado, 3 periodo"
+                      label="Tags"
+                      description="Ex: mit, undergraduate degree, computer science"
                       descriptionColor="green.300"
                       focusBorderColor="green.600"
                       bg="green.700"
@@ -246,7 +246,7 @@ export default function Community({ currentUserData }) {
               variant="ghost"
               onClick={onClose}
             >
-              Voltar
+              Close
             </Button>
             <Button
               type="submit"
@@ -258,7 +258,7 @@ export default function Community({ currentUserData }) {
               isLoading={formState.isSubmitting}
               onClick={handleSubmit(handleCreateCourse)}
             >
-              Criar
+              Create
             </Button>
           </ModalFooter>
         </ModalContent>

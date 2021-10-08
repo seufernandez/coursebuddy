@@ -152,7 +152,7 @@ export default function Resume({
             spacing="1/4"
           >
             <Text fontWeight="400" fontStyle="Italic" color="purple.500">
-              Por:
+              By:
             </Text>
             <Text fontWeight="600" fontSize="xl">
               {resumeCreatorData.name}
