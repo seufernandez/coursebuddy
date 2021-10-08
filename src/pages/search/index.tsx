@@ -2,6 +2,7 @@ import { GetServerSideProps } from 'next';
 
 import { Box, Tabs, Tab, TabList, TabPanels, TabPanel } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
+import Head from 'next/head';
 import { supabase } from '../../services/supabase';
 import { SearchInput } from '../../components/SearchInput';
 import { useGetSearchedCourses } from '../../services/hooks/useCourses';
@@ -34,6 +35,10 @@ export default function SearchPage({ users }) {
 
   return (
     <>
+      <Head>
+        <title>Search | CourseBuddy</title>
+      </Head>
+
       <Box
         w="90%"
         mx="auto"
