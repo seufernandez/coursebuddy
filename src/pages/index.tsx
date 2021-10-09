@@ -36,7 +36,7 @@ export default function Home() {
             You'll find: Resumes, Jobs, Articles, Classes, Tests and more than
             you can Imagine!
           </p>
-          <strong>Share your knowledge and grow with us!</strong>
+          <strong>Share knowledge and grow with us!</strong>
           <Box align="right" width="100%" mt="4">
             <Link href="/community">
               <a>
