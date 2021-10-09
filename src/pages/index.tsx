@@ -73,7 +73,28 @@ export default function Home() {
                 Share knowledge and grow with us!
               </Text>
             </Box>
-            <Box align="right" width="100%" pt={['2', '4', '6']}>
+            <Flex justify="flex-end" width="100%" pt={['2', '4', '6']}>
+              <Link href="/about">
+                <a>
+                  <Button
+                    colorScheme="purple"
+                    mr="4"
+                    size="lg"
+                    variant="ghost"
+                    color="purple.600"
+                    borderRadius="2xl"
+                    _hover={{
+                      color: 'purple.500',
+                      bgColor: 'purple.800',
+                    }}
+                    _active={{
+                      bgColor: 'purple.850',
+                    }}
+                  >
+                    What is CourseBuddy?
+                  </Button>
+                </a>
+              </Link>
               <Link href="/community">
                 <a>
                   <Button colorScheme="green" borderRadius="2xl" size="lg">
@@ -81,7 +102,7 @@ export default function Home() {
                   </Button>
                 </a>
               </Link>
-            </Box>
+            </Flex>
           </VStack>
         </Flex>
 
