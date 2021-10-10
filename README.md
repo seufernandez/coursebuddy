@@ -10,6 +10,8 @@
 
 ## 💻 Project
 
+CourseBuddy is an Open Source Library for students, create Course/Topic threads and link your notes to it!
+
 We believe that every student is a potential content producer, and if their content requires a place to be published to the world wide community, here we are.
 
 More about CB [here](https://coursebuddy.tk/about)
