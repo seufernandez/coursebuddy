@@ -29,6 +29,8 @@ This project was made using the followings Technologies:
 - [React Hook Form](https://react-hook-form.com/)
 - [React Icons](https://react-icons.github.io/react-icons/)
 
+Using Supabase we could have an amazing community support on their [Discord Server](https://discord.gg/bnncdqgBSS), a nice Database integration using supabase-js library and enjoy his tools.
+
 ## 🪐 Running
 
 To run the application...
