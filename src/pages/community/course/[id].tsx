@@ -96,8 +96,6 @@ export default function CoursePage({
     error: errorTopResumes,
   } = useGetTopLikedResumes(courseId);
 
-  console.log(topResumesData);
-
   const { register, handleSubmit, formState, errors } = useForm({
     resolver: yupResolver(createResumeFormSchema),
   });

@@ -238,7 +238,7 @@ export default async function handler(req, res) {
               name: values.name,
               description: values.description,
               image: values.image,
-              tags: values.description,
+              tags: values.tags,
               creator_id: currentUserId,
             },
           ])
@@ -262,7 +262,7 @@ export default async function handler(req, res) {
               description: values.description,
               image: values.image,
               link: values.link,
-              tags: values.description,
+              tags: values.tags,
               creator_id: currentUserId,
               course_id: courseId,
             },
