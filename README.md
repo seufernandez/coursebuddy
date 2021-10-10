@@ -2,8 +2,8 @@
   CourseBuddy
 </h1>
 <h1 align="center">
-    <img alt="Main Page" src=".github/mainpage.png" />
-    <img alt="Home Page" src=".github/homepage.png" />
+    <img alt="Main Page" src=".github/main.png" />
+    <img alt="Home Page" src=".github/home.png" />
 </h1>
 
 <br>
