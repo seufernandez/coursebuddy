@@ -73,7 +73,7 @@ export default function Home({currentUserId}) {
           />
 
           <ResumeList
-            title="Liked Resumes"
+            title="Liked Summaries"
             resumeArray={likedResumesArray}
             isLoading={isLoadingLikedResumes}
             isFetching={isFetchingLikedResumes}

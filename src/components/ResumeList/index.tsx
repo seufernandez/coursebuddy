@@ -101,7 +101,10 @@ export function ResumeList({
             {resumeArray && resumeArray?.length > 0 ? (
               <SimpleGrid w="100%" spacing="4" columns={[1, 2, 2, 3]}>
                 {resumeArray.map(resume => (
-                  <Link key={resume.id} href={`/community/resume/${resume.id}`}>
+                  <Link
+                    key={resume.id}
+                    href={`/community/summary/${resume.id}`}
+                  >
                     <a>
                       <Box
                         className={styles.resumeCard}

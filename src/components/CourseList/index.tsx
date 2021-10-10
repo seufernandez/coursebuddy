@@ -141,8 +141,8 @@ export function CourseList({
                               <Text color="green.500">
                                 {course.resumes_available !== null &&
                                 course.resumes_available > 0
-                                  ? `${course.resumes_available} Resumes`
-                                  : `No Resumes yet`}
+                                  ? `${course.resumes_available} Summaries`
+                                  : `No docs yet`}
                               </Text>
                             </Flex>
 

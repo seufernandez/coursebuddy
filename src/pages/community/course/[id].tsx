@@ -281,7 +281,7 @@ export default function CoursePage({
 
       <Box w="90%" mx="auto" my={12} maxWidth={1080} justifyContent="center">
         <ResumeList
-          title="Top Resumes"
+          title="Top Summaries"
           resumeArray={topResumesData}
           isLoading={isLoadingTopResumes}
           isFetching={isFetchingTopResumes}
@@ -289,7 +289,7 @@ export default function CoursePage({
         />
 
         <ResumeList
-          title="Latest Resumes"
+          title="Latest Summaries"
           resumeArray={latestsResumesData}
           isLoading={isLoadingLatestResumes}
           isFetching={isFetchingLatestResumes}
@@ -325,7 +325,7 @@ export default function CoursePage({
       >
         <ModalOverlay />
         <ModalContent bg="purple.800">
-          <ModalHeader>New Resume</ModalHeader>
+          <ModalHeader>New Material</ModalHeader>
           <ModalBody>
             <FormControl>
               <Box
@@ -383,7 +383,7 @@ export default function CoursePage({
 
                   <Input
                     name="link"
-                    label="Resume Link"
+                    label="Material Link"
                     description="Ex: GDrive, Notion etc..."
                     descriptionColor="purple.300"
                     focusBorderColor="purple.600"

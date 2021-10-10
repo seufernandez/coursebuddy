@@ -208,7 +208,7 @@ export default function About() {
               lineHeight="1.2"
               color="purple.500"
             >
-              - Then share your "Resume Link" with the{' '}
+              - Then share your "Material Link" with the{' '}
               <Text as="span" color="purple.200" fontWeight="bold">
                 World Community!
               </Text>

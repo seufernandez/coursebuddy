@@ -58,7 +58,7 @@ export default function Home() {
 
             <Box mt={['2', '2', '4']}>
               <Text fontSize={['lg', 'lg', 'xl']} lineHeight="1.2">
-                You'll find: Resumes, Jobs, Articles, Classes, Tests and more
+                You'll find: Summaries, Notes, Articles, Classes, Tests and more
                 than we can Imagine!
               </Text>
             </Box>

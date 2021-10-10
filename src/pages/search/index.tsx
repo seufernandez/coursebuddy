@@ -62,7 +62,7 @@ export default function SearchPage() {
                 _focus={{ boxShadow: 'none' }}
                 _selected={{ color: 'purple.900', bg: 'purple.500' }}
               >
-                Resumes
+                Summaries
               </Tab>
               <Tab isDisabled color="gray.900">
                 Institutions (soon)
