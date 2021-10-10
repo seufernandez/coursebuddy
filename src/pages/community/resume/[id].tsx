@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   Text,
   Box,
@@ -17,38 +17,47 @@ import Link from 'next/link';
 
 import { getSession, useSession } from 'next-auth/client';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { boolean } from 'yup';
 import { supabase } from '../../../services/supabase';
 import { NotFound } from '../../../components/NotFound';
 import { api } from '../../../services/api';
 
+type ResumeProps = {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  link: string;
+  tags: string;
+  creator_id: string;
+  created_at: string;
+  users: {
+    name: string;
+  };
+  courses: {
+    id: string;
+  };
+};
+
+interface ResumePageProps {
+  singleResumeData: ResumeProps;
+  resumeLiked: boolean;
+  currentUserData: any;
+  notUser: boolean;
+}
+
 export default function Resume({
   singleResumeData: resume,
-  resumeCreatorData,
-  courseId,
   resumeLiked,
   currentUserData,
   notUser = false,
-}) {
+}: ResumePageProps) {
   const [liked, setLiked] = useState(resumeLiked);
   const toast = useToast();
   const session = useSession();
 
   const currentUserId = currentUserData?.id;
   const resumeId = resume?.id;
-
-  if (notUser === true) {
-    toast({
-      id: 'joinusssssssss',
-      title: 'Hey, Join us!',
-      description:
-        'You need to be logged to get the Link, dont worry, it takes 2 clicks :)',
-      status: 'info',
-      variant: 'solid',
-      duration: 20000,
-      isClosable: true,
-      position: 'top-left',
-    });
-  }
 
   const handleLikeResume = async () => {
     // try {
@@ -155,7 +164,7 @@ export default function Resume({
               By:
             </Text>
             <Text fontWeight="600" fontSize="xl">
-              {resumeCreatorData.name}
+              {resume.users.name}
             </Text>
           </VStack>
         </Box>
@@ -206,16 +215,16 @@ export default function Resume({
               <Text
                 fontWeight="200"
                 fontSize={['lg', 'xl']}
-                color={notUser ? 'white' : 'gray.700'}
+                color="gray.700"
                 noOfLines={2}
-                as={notUser ? 'em' : 'abbr'}
+                as="abbr"
               >
-                {notUser ? 'Sign In to unlock link and like😋' : resume.link}
+                {resume.link}
               </Text>
             </Box>
 
             <Flex align="center" justify="end" mt="4" mb="4" w="100%">
-              <Link href={`/community/course/${courseId}`}>
+              <Link href={`/community/course/${resume.courses.id}`}>
                 <Button
                   colorScheme="purple"
                   color="purple.500"
@@ -229,32 +238,17 @@ export default function Resume({
                 </Button>
               </Link>
 
-              {notUser === false && (
-                <ChakraLink href={resume.link} isExternal h="10">
-                  <Button
-                    colorScheme="purple"
-                    color="purple.900"
-                    w="56"
-                    _focus={{ boxShadow: 'none' }}
-                    _hover={{ bg: 'purple.550' }}
-                  >
-                    Go to Link
-                  </Button>
-                </ChakraLink>
-              )}
-
-              {notUser === true && (
+              <ChakraLink href={resume.link} isExternal h="10">
                 <Button
                   colorScheme="purple"
                   color="purple.900"
                   w="56"
                   _focus={{ boxShadow: 'none' }}
                   _hover={{ bg: 'purple.550' }}
-                  isDisabled
                 >
                   Go to Link
                 </Button>
-              )}
+              </ChakraLink>
             </Flex>
           </Box>
           <Box align="right" w="100%">
@@ -321,12 +315,6 @@ export const getServerSideProps: GetServerSideProps = async ({
       .single();
     // console.log(JSON.stringify(singleResumeData, null, 2))
 
-    const resumeCreatorData = {
-      name: singleResumeData.users.name,
-    };
-
-    const courseId = singleResumeData.courses.id;
-
     const { data: liked } = await supabase
       .from('resume_likes')
       .select(
@@ -344,8 +332,6 @@ export const getServerSideProps: GetServerSideProps = async ({
     return {
       props: {
         singleResumeData,
-        resumeCreatorData,
-        courseId,
         currentUserData,
         resumeLiked,
       },
@@ -365,18 +351,11 @@ export const getServerSideProps: GetServerSideProps = async ({
     .eq('id', String(id))
     .single();
 
-  const resumeCreatorData = {
-    name: singleResumeData.users.name,
-  };
-
-  const courseId = singleResumeData.courses.id;
   const notUser = true;
 
   return {
     props: {
       singleResumeData,
-      resumeCreatorData,
-      courseId,
       notUser,
     },
   };
