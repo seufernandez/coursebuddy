@@ -20,7 +20,12 @@ export default function About() {
       </Head>
 
       <ChakraContainer w="100%" mx="auto" my="8" px="8" maxWidth={1080}>
-        <SimpleGrid spacing="4" justifyContent="center" minChildWidth="400px">
+        <Box
+          h="100%"
+          display={{ md: 'flex' }}
+          spacing="4"
+          justifyContent="center"
+        >
           <Flex align="center">
             <VStack pt="8" w="100%" mr="4" align="left">
               <Heading
@@ -53,7 +58,7 @@ export default function About() {
               alt=""
             />
           </Flex>
-        </SimpleGrid>
+        </Box>
 
         <Box mb="24" mt="12">
           <Text

@@ -73,7 +73,12 @@ export default function Home() {
                 Share knowledge and grow with us!
               </Text>
             </Box>
-            <Flex justify="flex-end" width="100%" pt={['2', '4', '6']}>
+            <Box
+              display={{ md: 'flex' }}
+              justify="flex-end"
+              width="100%"
+              pt={['2', '4', '6']}
+            >
               <Link href="/about">
                 <a>
                   <Button
@@ -102,7 +107,7 @@ export default function Home() {
                   </Button>
                 </a>
               </Link>
-            </Flex>
+            </Box>
           </VStack>
         </Flex>
 

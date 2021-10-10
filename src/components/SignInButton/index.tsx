@@ -26,7 +26,7 @@ export function SignInButton() {
     lg: true,
   });
 
-  const isMobile = useBreakpointValue({
+  const isNotMobile = useBreakpointValue({
     base: false,
     sm: true,
   });
@@ -39,7 +39,7 @@ export function SignInButton() {
         onClick={() => signIn('google', { callbackUrl: '/community' })}
       >
         <FaGoogle color="#00ff9d" />
-        {isMobile ? 'Sign In with Google' : 'Sign In'}
+        {isNotMobile ? 'Sign In with Google' : 'SignIn'}
       </button>
     );
   }
