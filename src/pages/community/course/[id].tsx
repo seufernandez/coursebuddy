@@ -178,7 +178,7 @@ export default function CoursePage({
         marginTop={12}
         marginBottom={4}
         border="1px"
-        borderColor="green.500"
+        borderColor="green.700"
         borderRadius="2xl"
         justifyContent="center"
       >
