@@ -50,6 +50,35 @@ $ yarn start
 
 App will be available on port: http://localhost:3000.
 
+## 📻 Made while listenning to
+
+This project was made in the company of these great Artists
+
+<details>
+  <summary>Check Artists</summary>
+
+- The Beatles
+
+- George Harrison
+
+- Paul McCartney
+
+- Ringo Starr
+
+- John Lennon
+
+- Oasis
+
+- David Bowie
+
+- Billie Eilish
+
+- Arctic Monkeys
+
+- O Terno
+
+</details>
+
 ---
 
 Made with 🧡 by Gabriel Fernandes
