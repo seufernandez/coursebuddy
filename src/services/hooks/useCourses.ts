@@ -27,6 +27,24 @@ export function useGetLatestCourses() {
   );
 }
 
+export function useGetMostLikedCourses() {
+  return useQuery<courseData[]>(
+    'useGetMostLikedCourses',
+    async () => {
+      const { data } = await api.get('/api/supaRequests', {
+        headers: {
+          type: 'COMMUNITY-get-most-liked-courses',
+        },
+      });
+
+      return data;
+    },
+    {
+      staleTime: 1000 * 5, // 5 sec
+    }
+  );
+}
+
 export function useGetLikedCourses(currentUserId) {
   return useQuery<courseData[]>(
     'useGetLikedCourses',

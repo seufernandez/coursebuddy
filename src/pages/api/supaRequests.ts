@@ -36,7 +36,7 @@ export default async function handler(req, res) {
           .from('courses')
           .select('id, name, image, likes, resumes_available')
           .order('created_at', { ascending: false })
-          .range(0, 11);
+          .range(0, 2);
 
         if (error) {
           return res
@@ -46,15 +46,15 @@ export default async function handler(req, res) {
 
         res.status(200).json(courses);
         break;
+
       case 'COMMUNITY-get-most-liked-courses':
         const { data: mostLikedCourses, error: mostLikedCoursesErr } =
           await supabase
             .from('courses')
             .select('id, name, image, likes, resumes_available')
-            .order('created_at', { ascending: false })
-            .range(0, 11);
+            .order('likes', { ascending: false });
 
-        if (error) {
+        if (mostLikedCoursesErr) {
           return res
             .status(400)
             .send(
@@ -226,9 +226,7 @@ export default async function handler(req, res) {
 
     const reqBody = req.body;
     const { values, currentUserId, courseId, resumeId } = reqBody;
-    // console.log(courseId);
-    // console.log(resumeId);
-    // console.log(currentUserId);
+
     switch (type) {
       case 'community-create-course':
         const { data: courseData, error } = await supabase

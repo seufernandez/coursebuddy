@@ -31,7 +31,10 @@ import { Input } from '../../components/form/input';
 
 import styles from './styles.module.scss';
 import { CourseList } from '../../components/CourseList';
-import { useGetLatestCourses } from '../../services/hooks/useCourses';
+import {
+  useGetLatestCourses,
+  useGetMostLikedCourses,
+} from '../../services/hooks/useCourses';
 
 type CreateCourseData = {
   name: string;
@@ -68,11 +71,18 @@ export default function Community({ currentUserData }) {
   const currentUserId = currentUserData?.id;
 
   const {
-    data: latestsCoursesData,
-    isLoading,
-    isFetching,
-    error,
+    data: latestCoursesData,
+    isLoading: isLoadingLatestCoursesData,
+    isFetching: isFetchingLatestCoursesData,
+    error: errLatestCoursesData,
   } = useGetLatestCourses();
+
+  const {
+    data: mostLikedCoursesData,
+    isLoading: isLoadingMostLikedCoursesData,
+    isFetching: isFetchingMostLikedCoursesData,
+    error: errMostLikedCoursesData,
+  } = useGetMostLikedCourses();
 
   const { register, handleSubmit, formState, errors } = useForm({
     resolver: yupResolver(createCourseFormSchema),
@@ -123,17 +133,18 @@ export default function Community({ currentUserData }) {
 
         <CourseList
           title="Latests Courses"
-          isLoading={isLoading}
-          isFetching={isFetching}
-          coursesArray={latestsCoursesData}
-          error={error}
+          coursesArray={latestCoursesData}
+          isLoading={isLoadingLatestCoursesData}
+          isFetching={isFetchingLatestCoursesData}
+          error={errLatestCoursesData}
         />
 
         <CourseList
-          title="Top Courses Ever"
-          isLoading={isLoading}
-          isFetching={isFetching}
-          error={error}
+          title="Top Liked Courses"
+          coursesArray={mostLikedCoursesData}
+          isLoading={isLoadingMostLikedCoursesData}
+          isFetching={isFetchingMostLikedCoursesData}
+          error={errMostLikedCoursesData}
         />
 
         {!!session && (
