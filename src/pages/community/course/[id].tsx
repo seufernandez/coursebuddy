@@ -178,7 +178,7 @@ export default function CoursePage({
         marginTop={12}
         marginBottom={4}
         border="1px"
-        borderColor="purple.500"
+        borderColor="green.500"
         borderRadius="2xl"
         justifyContent="center"
       >
@@ -229,7 +229,7 @@ export default function CoursePage({
           <Text
             px={['6', '8']}
             lineHeight="5"
-            color="purple.500"
+            color="green.600"
             noOfLines={6}
             fontSize={['sm', 'md', 'lg']}
           >
@@ -258,14 +258,14 @@ export default function CoursePage({
           <Box align="right" w="100%">
             <HStack
               w="16"
-              bgColor="purple.800"
+              bgColor="green.900"
               borderBottomRightRadius="2xl"
               borderTopLeftRadius="2xl"
             >
               <Button
                 pl="5"
                 size="lg"
-                color="purple.500"
+                color="green.500"
                 variant="unstyled"
                 fontSize="2xl"
                 justifyContent="center"
