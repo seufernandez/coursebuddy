@@ -14,6 +14,11 @@ CourseBuddy is an Open Source Library for students, create Course/Topic threads 
 
 We believe that every student is a potential content producer, and if their content requires a place to be published to the world wide community, here we are.
 
+Like what Youtube does somehow, but we think with less barriers cause there's no need to know edit, or record videos to publish your great content, just write it well, bring it together and link it to the platform.😎🌹
+
+And living in Brazil, with high social inequality indices, we hope we can make easy to people share their learning, to they learn more, and more learning be available to who can't afford as well.
+
+
 More about CB [here](https://coursebuddy.tk/about)
 
 ## 🧪 Technologies
