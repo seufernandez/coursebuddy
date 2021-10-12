@@ -1,4 +1,4 @@
-import { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   Text,
   Box,
@@ -11,16 +11,23 @@ import {
   Link as ChakraLink,
   useToast,
 } from '@chakra-ui/react';
+import { useState } from 'react';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-
 import { getSession, useSession } from 'next-auth/client';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
-import { boolean } from 'yup';
+
 import { supabase } from '../../../services/supabase';
 import { NotFound } from '../../../components/NotFound';
 import { api } from '../../../services/api';
+
+type CurrentUserData = {
+  id: string;
+  name: string;
+  avatar_url: string;
+  slug_number: number;
+};
 
 type ResumeProps = {
   id: string;
@@ -39,10 +46,10 @@ type ResumeProps = {
   };
 };
 
-interface ResumePageProps {
+interface SummaryPageProps {
   singleResumeData: ResumeProps;
   resumeLiked: boolean;
-  currentUserData: any;
+  currentUserData: CurrentUserData;
   notUser: boolean;
 }
 
@@ -51,7 +58,7 @@ export default function Resume({
   resumeLiked,
   currentUserData,
   notUser = false,
-}: ResumePageProps) {
+}: SummaryPageProps) {
   const [liked, setLiked] = useState(resumeLiked);
   const toast = useToast();
   const session = useSession();
@@ -298,7 +305,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 
     const { data: currentUserData } = await supabase
       .from('users')
-      .select('*')
+      .select('id, name, email, avatar_url, slug_number')
       .eq('email', `${currentUserEmail}`)
       .single();
 
@@ -306,13 +313,14 @@ export const getServerSideProps: GetServerSideProps = async ({
       .from('resumes')
       .select(
         `
-    *,
-    users: creator_id ( name ),
-    courses: course_id ( id )
-    `
+        id, name, description, image, link, tags, creator_id, created_at,
+        users: creator_id ( name ),
+        courses: course_id ( id )
+        `
       )
       .eq('id', String(id))
       .single();
+
     // console.log(JSON.stringify(singleResumeData, null, 2))
 
     const { data: liked } = await supabase
@@ -343,9 +351,9 @@ export const getServerSideProps: GetServerSideProps = async ({
     .from('resumes')
     .select(
       `
-    *,
-    users: creator_id ( name ),
-    courses: course_id ( id )
+      id, name, description, image, link, tags, creator_id, created_at,
+      users: creator_id ( name ),
+      courses: course_id ( id )
     `
     )
     .eq('id', String(id))

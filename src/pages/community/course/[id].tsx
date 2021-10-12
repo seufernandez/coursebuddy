@@ -1,8 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
-import { GetServerSideProps } from 'next';
-import Head from 'next/head';
-import router from 'next/router';
-import { useState } from 'react';
 import {
   Text,
   Img,
@@ -22,6 +19,10 @@ import {
   FormControl,
   useToast,
 } from '@chakra-ui/react';
+import { GetServerSideProps } from 'next';
+import Head from 'next/head';
+import router from 'next/router';
+import { useState } from 'react';
 import { getSession, useSession } from 'next-auth/client';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -50,6 +51,29 @@ type CreateResumeData = {
   creator_id: string;
 };
 
+type CurrentUserData = {
+  id: string;
+  name: string;
+  avatar_url: string;
+  slug_number: number;
+};
+
+type SingleCourseData = {
+  id: string;
+  image: string;
+  name: string;
+  description: string;
+  likes: number;
+  tags: string;
+  slug_number: number;
+};
+
+interface CoursePageProps {
+  singleCourseData: SingleCourseData;
+  currentUser: CurrentUserData;
+  courseLiked: boolean;
+}
+
 const createResumeFormSchema = yup.object().shape({
   name: yup
     .string()
@@ -71,15 +95,15 @@ const createResumeFormSchema = yup.object().shape({
 
 export default function CoursePage({
   singleCourseData,
-  currentUserData,
+  currentUser,
   courseLiked,
-}) {
+}: CoursePageProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [liked, setLiked] = useState(courseLiked);
   const [session] = useSession();
   const toast = useToast();
 
-  const currentUserId = currentUserData?.id;
+  const currentUserId = currentUser?.id;
   const courseId = singleCourseData?.id;
 
   const {
@@ -453,15 +477,15 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   const currentUserEmail = session?.user.email;
 
-  const { data: currentUserData } = await supabase
+  const { data: currentUser } = await supabase
     .from('users')
-    .select('*')
+    .select('id, name, email, avatar_url, slug_number')
     .eq('email', `${currentUserEmail}`)
     .single();
 
   const { data: singleCourseData } = await supabase
     .from('courses')
-    .select('*')
+    .select('id, name, image, likes, slug_number, description, tags')
     .eq('id', String(id))
     .single();
 
@@ -484,7 +508,7 @@ export const getServerSideProps: GetServerSideProps = async ({
         `
     )
     .eq('course_id', String(id))
-    .eq('user_id', String(currentUserData?.id))
+    .eq('user_id', String(currentUser?.id))
     .single();
 
   const courseLiked = liked !== null;
@@ -492,7 +516,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     props: {
       singleCourseData,
       resumesArray,
-      currentUserData,
+      currentUser,
       courseLiked,
     },
   };

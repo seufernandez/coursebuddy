@@ -44,6 +44,18 @@ type CreateCourseData = {
   creator_id: string;
 };
 
+type CurrentUserData = {
+  id: string;
+  name: string;
+  email: string;
+  avatar_url: string;
+  slug_number: number;
+};
+
+interface CommunityPageProps {
+  currentUser: CurrentUserData;
+}
+
 const createCourseFormSchema = yup.object().shape({
   name: yup
     .string()
@@ -62,13 +74,13 @@ const createCourseFormSchema = yup.object().shape({
     .required('Tags are important to help others to find the course :)'),
 });
 
-export default function Community({ currentUserData }) {
+export default function Community({ currentUser }: CommunityPageProps) {
   const [session] = useSession();
   const toast = useToast();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const currentUserId = currentUserData?.id;
+  const currentUserId = currentUser?.id;
 
   const {
     data: latestCoursesData,
@@ -282,13 +294,13 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const session = await getSession({ req });
 
   const currentUserEmail = session?.user.email;
-  const { data: currentUserData, error } = await supabase
+  const { data: currentUser, error } = await supabase
     .from('users')
-    .select('*')
+    .select('id, name, email, avatar_url, slug_number')
     .eq('email', `${currentUserEmail}`)
     .single();
 
   return {
-    props: { currentUserData },
+    props: { currentUser },
   };
 };

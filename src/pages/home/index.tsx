@@ -17,7 +17,13 @@ import styles from './styles.module.scss';
 import { useGetLikedCourses } from '../../services/hooks/useCourses';
 import { useGetLikedResumes } from '../../services/hooks/useResumes';
 
-export default function Home({currentUserId}) {
+interface CurrentUserIdData {
+  currentUserId: {
+    id: string;
+  }
+}
+
+export default function Home({currentUserId}:CurrentUserIdData) {
   const router = useRouter();
   const [session] = useSession();
 
