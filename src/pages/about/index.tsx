@@ -35,7 +35,7 @@ export default function About() {
               >
                 Imagine a Library made by the{' '}
                 <Text as="span" color="purple.500">
-                  World Wide community
+                  Worldwide community
                 </Text>{' '}
               </Heading>
 
@@ -67,7 +67,7 @@ export default function About() {
             lineHeight="1"
             align="center"
           >
-            "Every student is a potencial content producer"
+            "Every student is a potential content producer"
           </Text>
           <Text
             align="end"
@@ -86,9 +86,9 @@ export default function About() {
             lineHeight="1.5"
             align="center"
           >
-            So with this statement and the "WILLIAM GLASSER's Piramid" we notice
-            that's a lot of students who are writing what they are studying on
-            Digital Notes or Sumaries
+            So with this statement and the "WILLIAM GLASSER's Pyramid" we notice
+            that a lot of students who are writing what they are studying on
+            Digital Notes or Summaries
           </Text>
           <Text
             mt="4"
@@ -101,7 +101,7 @@ export default function About() {
             And maybe after the tests, and over the months, all that knowledge
             written by the student may be left behind and{' '}
             <Text as="span" color="purple.200" fontWeight="bold">
-              will never be exploited by anyone again
+              will never be used by anyone again
             </Text>
           </Text>
         </Box>
@@ -121,7 +121,7 @@ export default function About() {
                   lineHeight="1.2"
                   fontSize={['xl', '2xl', '2xl']}
                 >
-                  It's when CourseBuddy comes into the picture!
+                  This is where CourseBuddy comes into the picture!
                 </Text>
                 <Text
                   align="left"
@@ -130,7 +130,7 @@ export default function About() {
                   fontWeight="md"
                   fontSize={['lg', 'lg', 'xl']}
                 >
-                  a platform where students over the world can share and left
+                  A platform where students over the world can share and leave
                   their knowledge to be appreciated by the future generations
                 </Text>
               </Box>
@@ -185,7 +185,7 @@ export default function About() {
               lineHeight="1.2"
               color="purple.500"
             >
-              - Sing In to Create a{' '}
+              - Sign In to Create a{' '}
               <Text as="span" fontWeight="bold" color="purple.100">
                 Course or a Topic{' '}
               </Text>
