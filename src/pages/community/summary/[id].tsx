@@ -251,7 +251,7 @@ export default function Resume({
                   color="purple.900"
                   w="56"
                   _focus={{ boxShadow: 'none' }}
-                  _hover={{ bg: 'purple.550', textDecoration: none }}
+                  _hover={{ bg: 'purple.550', textDecoration: 'none' }}
                 >
                   Go to Link
                 </Button>
