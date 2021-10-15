@@ -144,7 +144,7 @@ export default function Community({ currentUser }: CommunityPageProps) {
         </div>
 
         <CourseList
-          title="Latests Courses"
+          title="Latest Courses"
           coursesArray={latestCoursesData}
           isLoading={isLoadingLatestCoursesData}
           isFetching={isFetchingLatestCoursesData}
