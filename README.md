@@ -19,7 +19,7 @@ Like what Youtube does somehow, but we think with less barriers cause there's no
 And living in Brazil, with high social inequality indices, we hope we can make easy to people share their learning, to they learn more, and more learning be available to who can't afford as well.
 
 
-More about CB [here](https://coursebuddy.tk/about)
+More about CB [here](https://coursebuddy.app/about)
 
 ## 🧪 Technologies
 
