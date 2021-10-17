@@ -1,11 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useEffect } from 'react';
-import { GetServerSideProps } from 'next';
-import { getSession, useSession } from 'next-auth/client';
-import { useRouter } from 'next/router';
-import Head from 'next/head';
-import Link from 'next/link';
-
 import {
   Button,
   Box,
@@ -15,10 +8,18 @@ import {
   Text,
   Img,
 } from '@chakra-ui/react';
+import { useEffect } from 'react';
+import { GetServerSideProps } from 'next';
+import { getSession, useSession } from 'next-auth/client';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
+import Link from 'next/link';
+import useLocale from '../services/hooks/useLocale';
 
 export default function Home() {
   const [session] = useSession();
   const router = useRouter();
+  const t = useLocale();
 
   useEffect(() => {
     if (session) {
@@ -29,7 +30,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>CourseBuddy</title>
+        <title>{t.communityPage.community}</title>
       </Head>
 
       <Box
@@ -49,17 +50,16 @@ export default function Home() {
               fontWeight="black"
               lineHeight="0.9"
             >
-              Join with{' '}
+              {t.mainPage.h1_part1}{' '}
               <Text as="span" color="green.400">
-                thousands of students
+                {t.mainPage.h1_span}
               </Text>{' '}
-              over the World
+              {t.mainPage.h1_part2}
             </Heading>
 
             <Box mt={['2', '2', '4']}>
               <Text fontSize={['lg', 'lg', 'xl']} lineHeight="1.2">
-                You'll find: Summaries, Notes, Articles, Classes, Tests and more
-                than we can Imagine!
+                {t.mainPage.h2}
               </Text>
             </Box>
             <Box mt={['2', '2', '4']}>
@@ -70,7 +70,7 @@ export default function Home() {
                 lineHeight="1"
                 align="left"
               >
-                Share knowledge and grow with us!
+                {t.mainPage.strong}
               </Text>
             </Box>
             <Box
@@ -96,14 +96,14 @@ export default function Home() {
                       bgColor: 'purple.850',
                     }}
                   >
-                    What is CourseBuddy?
+                    {t.mainPage.aboutbutton}
                   </Button>
                 </a>
               </Link>
               <Link href="/community">
                 <a>
                   <Button colorScheme="green" borderRadius="2xl" size="lg">
-                    Join Community!
+                    {t.mainPage.communityButton}
                   </Button>
                 </a>
               </Link>
@@ -119,13 +119,16 @@ export default function Home() {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  locale,
+}) => {
   const session = await getSession({ req });
 
   if (session) {
     return {
       redirect: {
-        destination: '/home',
+        destination: locale === 'pt' ? '/home' : `/${locale}/home`,
         permanent: false,
       },
     };

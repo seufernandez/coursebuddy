@@ -16,6 +16,7 @@ import { AiFillHeart } from 'react-icons/ai';
 import styles from './styles.module.scss';
 
 import { NotFound } from '../NotFound';
+import useLocale from '../../services/hooks/useLocale';
 
 type ResumeCardContentProps = {
   id: string;
@@ -44,6 +45,8 @@ export function ResumeList({
   isFetching = false,
   error,
 }: ResumeListProps) {
+  const t = useLocale();
+
   return (
     <>
       {!!title && (
@@ -119,7 +122,7 @@ export function ResumeList({
                               ? resume.image
                               : '/assets/illustrations/ResumeImageSource.svg'
                           }
-                          alt="Imagem do Curso"
+                          alt={t.resumeList.thumbAlt}
                           w="100%"
                           h="55%"
                           borderTopRadius="2xl"
@@ -145,9 +148,11 @@ export function ResumeList({
                               </Box>
 
                               <Text color="purple.500">
-                                {resume.likes !== null || resume.likes > 0
-                                  ? `${resume.likes} Likes`
-                                  : `No Likes`}
+                                {resume.likes !== null && resume.likes === 1
+                                  ? `${resume.likes} ${t.resumeList.like}`
+                                  : resume.likes > 1
+                                  ? `${resume.likes} ${t.resumeList.like}s`
+                                  : `${t.resumeList.noLikes}`}
                               </Text>
                             </Flex>
 

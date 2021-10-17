@@ -35,6 +35,7 @@ import {
   useGetLatestCourses,
   useGetMostLikedCourses,
 } from '../../services/hooks/useCourses';
+import useLocale from '../../services/hooks/useLocale';
 
 type CreateCourseData = {
   name: string;
@@ -77,6 +78,7 @@ const createCourseFormSchema = yup.object().shape({
 export default function Community({ currentUser }: CommunityPageProps) {
   const [session] = useSession();
   const toast = useToast();
+  const t = useLocale();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -114,8 +116,8 @@ export default function Community({ currentUser }: CommunityPageProps) {
 
     if (response.status === 200) {
       toast({
-        title: 'Course Thread created',
-        description: 'Redirecting to Course Page...',
+        title: `${t.communityPage.toast.title}`,
+        description: `${t.communityPage.toast.description}`,
         status: 'success',
         duration: 2000,
         isClosable: true,
@@ -129,7 +131,7 @@ export default function Community({ currentUser }: CommunityPageProps) {
   return (
     <>
       <Head>
-        <title>Community | CourseBuddy</title>
+        <title>{t.communityPage.community} | CourseBuddy</title>
       </Head>
 
       <div className={styles.main}>
@@ -139,12 +141,12 @@ export default function Community({ currentUser }: CommunityPageProps) {
             alt="world, pretty handsome huh?"
           />
           <Text fontSize={['4xl']} fontWeight="bold" ml="2">
-            Community
+            {t.communityPage.community}
           </Text>
         </div>
 
         <CourseList
-          title="Latests Courses"
+          title={t.communityPage.latestCourses}
           coursesArray={latestCoursesData}
           isLoading={isLoadingLatestCoursesData}
           isFetching={isFetchingLatestCoursesData}
@@ -152,7 +154,7 @@ export default function Community({ currentUser }: CommunityPageProps) {
         />
 
         <CourseList
-          title="Top Liked Courses"
+          title={t.communityPage.topLiked}
           coursesArray={mostLikedCoursesData}
           isLoading={isLoadingMostLikedCoursesData}
           isFetching={isFetchingMostLikedCoursesData}
@@ -188,7 +190,7 @@ export default function Community({ currentUser }: CommunityPageProps) {
       >
         <ModalOverlay />
         <ModalContent bg="green.900">
-          <ModalHeader>New Course</ModalHeader>
+          <ModalHeader>{t.communityPage.form.newCourse}</ModalHeader>
           <ModalBody>
             <FormControl>
               <Box
@@ -203,8 +205,8 @@ export default function Community({ currentUser }: CommunityPageProps) {
                 <VStack spacing="4">
                   <Input
                     name="name"
-                    label="Course Name"
-                    description="Ex: MIT | Undergraduate Degree | Computer Science "
+                    label={t.communityPage.form.courseName}
+                    description={t.communityPage.form.courseNameEx}
                     descriptionColor="green.300"
                     focusBorderColor="green.600"
                     bg="green.700"
@@ -218,7 +220,7 @@ export default function Community({ currentUser }: CommunityPageProps) {
 
                   <Input
                     name="description"
-                    label="Course Description"
+                    label={t.communityPage.form.courseDescription}
                     focusBorderColor="green.600"
                     bg="green.700"
                     variant="filled"
@@ -231,7 +233,7 @@ export default function Community({ currentUser }: CommunityPageProps) {
 
                   <Input
                     name="image"
-                    label="Paste here the image URL"
+                    label={t.communityPage.form.courseUrl}
                     focusBorderColor="green.600"
                     bg="green.700"
                     variant="filled"
@@ -245,8 +247,8 @@ export default function Community({ currentUser }: CommunityPageProps) {
                   <Box w="100%" justify="flex-initial">
                     <Input
                       name="tags"
-                      label="Tags"
-                      description="Ex: mit, undergraduate degree, computer science"
+                      label={t.communityPage.form.tags}
+                      description={t.communityPage.form.tagsEx}
                       descriptionColor="green.300"
                       focusBorderColor="green.600"
                       bg="green.700"
@@ -269,7 +271,7 @@ export default function Community({ currentUser }: CommunityPageProps) {
               variant="ghost"
               onClick={onClose}
             >
-              Close
+              {t.communityPage.form.closeButton}
             </Button>
             <Button
               type="submit"
@@ -281,7 +283,7 @@ export default function Community({ currentUser }: CommunityPageProps) {
               isLoading={formState.isSubmitting}
               onClick={handleSubmit(handleCreateCourse)}
             >
-              Create
+              {t.communityPage.form.createButton}
             </Button>
           </ModalFooter>
         </ModalContent>

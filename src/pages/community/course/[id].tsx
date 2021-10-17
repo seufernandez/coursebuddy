@@ -40,6 +40,7 @@ import {
   useGetLatestResumes,
   useGetTopLikedResumes,
 } from '../../../services/hooks/useResumes';
+import useLocale from '../../../services/hooks/useLocale';
 
 type CreateResumeData = {
   course_id: string;
@@ -102,6 +103,7 @@ export default function CoursePage({
   const [liked, setLiked] = useState(courseLiked);
   const [session] = useSession();
   const toast = useToast();
+  const t = useLocale();
 
   const currentUserId = currentUser?.id;
   const courseId = singleCourseData?.id;
@@ -139,8 +141,8 @@ export default function CoursePage({
     onClose();
 
     toast({
-      title: 'Resume Created successfully',
-      description: 'Redirecting to Resume Page...',
+      title: `${t.coursePage.toast.title}`,
+      description: `${t.coursePage.toast.description}`,
       status: 'success',
       duration: 2000,
       isClosable: true,
@@ -178,7 +180,7 @@ export default function CoursePage({
     return (
       <>
         <Head>
-          <title>404 course page</title>
+          <title>{t.page404.tabMessage}</title>
         </Head>
 
         <NotFound />
@@ -305,7 +307,7 @@ export default function CoursePage({
 
       <Box w="90%" mx="auto" my={12} maxWidth={1080} justifyContent="center">
         <ResumeList
-          title="Top Summaries"
+          title={t.coursePage.topSummaries}
           resumeArray={topResumesData}
           isLoading={isLoadingTopResumes}
           isFetching={isFetchingTopResumes}
@@ -313,7 +315,7 @@ export default function CoursePage({
         />
 
         <ResumeList
-          title="Latest Summaries"
+          title={t.coursePage.latestSummaries}
           resumeArray={latestsResumesData}
           isLoading={isLoadingLatestResumes}
           isFetching={isFetchingLatestResumes}
@@ -349,7 +351,7 @@ export default function CoursePage({
       >
         <ModalOverlay />
         <ModalContent bg="purple.800">
-          <ModalHeader>New Material</ModalHeader>
+          <ModalHeader>{t.coursePage.form.newMaterial}</ModalHeader>
           <ModalBody>
             <FormControl>
               <Box
@@ -364,8 +366,8 @@ export default function CoursePage({
                 <VStack spacing="4">
                   <Input
                     name="name"
-                    label="Name"
-                    description="Ex: What I learnt on 'Computer Science' at MIT..."
+                    label={t.coursePage.form.name}
+                    description={t.coursePage.form.nameEx}
                     descriptionColor="purple.300"
                     focusBorderColor="purple.600"
                     bg="purple.600"
@@ -379,7 +381,7 @@ export default function CoursePage({
 
                   <Input
                     name="description"
-                    label="Description"
+                    label={t.coursePage.form.description}
                     focusBorderColor="purple.600"
                     bg="purple.600"
                     variant="filled"
@@ -392,8 +394,8 @@ export default function CoursePage({
 
                   <Input
                     name="image"
-                    label="Image URL"
-                    description="(optional)"
+                    label={t.coursePage.form.imageURL}
+                    description={t.coursePage.form.imageURLEx}
                     descriptionColor="purple.300"
                     focusBorderColor="purple.600"
                     bg="purple.600"
@@ -407,8 +409,8 @@ export default function CoursePage({
 
                   <Input
                     name="link"
-                    label="Material Link"
-                    description="Ex: GDrive, Notion etc..."
+                    label={t.coursePage.form.materialLink}
+                    description={t.coursePage.form.materialLinkEx}
                     descriptionColor="purple.300"
                     focusBorderColor="purple.600"
                     bg="purple.600"
@@ -423,8 +425,8 @@ export default function CoursePage({
                   <Box w="100%" justify="flex-initial">
                     <Input
                       name="tags"
-                      label="Tags"
-                      description="Ex: mit, undergraduate degree, computer science"
+                      label={t.coursePage.form.tags}
+                      description={t.coursePage.form.tagsEx}
                       descriptionColor="purple.300"
                       focusBorderColor="purple.600"
                       bg="purple.600"

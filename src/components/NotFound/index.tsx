@@ -6,6 +6,7 @@ import {
   HStack,
   useBreakpointValue,
 } from '@chakra-ui/react';
+import useLocale from '../../services/hooks/useLocale';
 
 type NotFoundProps = {
   h?: string;
@@ -20,6 +21,8 @@ export function NotFound({
   boxSize,
   activeBackground = false,
 }: NotFoundProps) {
+  const t = useLocale();
+
   const isWideScreen = useBreakpointValue({
     base: false,
     lg: true,
@@ -49,7 +52,7 @@ export function NotFound({
           alignSelf="center"
         />
         <Text alignSelf="center" fontWeight="bold" fontSize="2xl" ml="4">
-          Oops, nothing here yet...
+          {t.page404.message}
         </Text>
       </Flex>
       {!!activeBackground && (

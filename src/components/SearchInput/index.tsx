@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { BiSearchAlt } from 'react-icons/bi';
 import useDebounce from '../../services/hooks/useDebounce';
 
-export function SearchInput({ value, onChange }) {
+export function SearchInput({ value, onChange, placeholder }) {
   const [searchDisplayValue, setSearchDisplayValue] = useState(value);
 
   const debouncedSearch = useDebounce(onChange, 500);
@@ -22,7 +22,7 @@ export function SearchInput({ value, onChange }) {
     <InputGroup>
       <ChakraInput
         size="md"
-        placeholder="Search by Name"
+        placeholder={placeholder}
         borderColor="purple.600"
         focusBorderColor="purple.500"
         _placeholder={{ color: 'purple.500' }}

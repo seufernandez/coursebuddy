@@ -8,9 +8,12 @@ import { ResumeList } from '../../components/ResumeList/index';
 
 import { useGetSearchedResumes } from '../../services/hooks/useResumes';
 import { useGetSearchedCourses } from '../../services/hooks/useCourses';
+import useLocale from '../../services/hooks/useLocale';
 
 export default function SearchPage() {
   const [text, setText] = useState('');
+  const t = useLocale();
+
   const {
     data: searchedCourses,
     isLoading: isLoadingCourse,
@@ -35,7 +38,7 @@ export default function SearchPage() {
   return (
     <>
       <Head>
-        <title>Search | CourseBuddy</title>
+        <title>{t.search.tabTitle}</title>
       </Head>
 
       <Box
@@ -48,7 +51,11 @@ export default function SearchPage() {
         justifyContent="center"
       >
         {' '}
-        <SearchInput value={text} onChange={search => setText(search)} />
+        <SearchInput
+          placeholder={t.search.placeholder}
+          value={text}
+          onChange={search => setText(search)}
+        />
         <Box w="100%" mt="4">
           <Tabs variant="soft-rounded">
             <TabList>
@@ -56,23 +63,23 @@ export default function SearchPage() {
                 _focus={{ boxShadow: 'none' }}
                 _selected={{ color: 'purple.900', bg: 'green.400' }}
               >
-                Courses
+                {t.search.filterCourse}
               </Tab>
               <Tab
                 _focus={{ boxShadow: 'none' }}
                 _selected={{ color: 'purple.900', bg: 'purple.500' }}
               >
-                Summaries
+                {t.search.filterResume}
               </Tab>
               <Tab isDisabled color="gray.900">
-                Institutions (soon)
+                {t.search.filterInstitutions}
               </Tab>
             </TabList>
 
             <TabPanels>
               <TabPanel p="0">
                 <CourseList
-                  title="Results:"
+                  title={t.search.results}
                   coursesArray={searchedCourses}
                   isLoading={isLoadingCourse}
                   isFetching={isFetchingCourse}
@@ -81,7 +88,7 @@ export default function SearchPage() {
               </TabPanel>
               <TabPanel p="0">
                 <ResumeList
-                  title="Results:"
+                  title={t.search.results}
                   resumeArray={searchedResumes}
                   isLoading={isLoadingResume}
                   isFetching={isFetchingResume}

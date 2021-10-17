@@ -15,9 +15,11 @@ import {
 import { FaGoogle } from 'react-icons/fa';
 import Profile from './Profile';
 import styles from './styles.module.scss';
+import useLocale from '../../services/hooks/useLocale';
 
 export function SignInButton() {
   const [session] = useSession();
+  const t = useLocale();
 
   const initRef = React.useRef();
 
@@ -39,7 +41,7 @@ export function SignInButton() {
         onClick={() => signIn('google', { callbackUrl: '/community' })}
       >
         <FaGoogle color="#00ff9d" />
-        {isNotMobile ? 'Sign In with Google' : 'SignIn'}
+        {isNotMobile ? `${t.headers.signInWithGoogle}` : `${t.headers.signIn}`}
       </button>
     );
   }
@@ -59,14 +61,14 @@ export function SignInButton() {
               <PopoverContent p="2" bg="purple.700" borderColor="purple.900">
                 <PopoverCloseButton />
                 <PopoverBody>
-                  <Box>Do you really want to sign out?</Box>
+                  <Box>{t.signInButton.confirmation}</Box>
                   <Button
                     mt={4}
                     colorScheme="purple"
                     onClick={() => signOut()}
                     ref={initRef}
                   >
-                    yep, Sign Out
+                    {t.signInButton.confirmationButton}
                   </Button>
                 </PopoverBody>
               </PopoverContent>

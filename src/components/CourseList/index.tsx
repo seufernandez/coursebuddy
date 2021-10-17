@@ -16,6 +16,7 @@ import { AiFillHeart } from 'react-icons/ai';
 import styles from './styles.module.scss';
 
 import { NotFound } from '../NotFound';
+import useLocale from '../../services/hooks/useLocale';
 
 type CourseCardContentProps = {
   id: string;
@@ -40,6 +41,8 @@ export function CourseList({
   isFetching = false,
   error,
 }: CourseListProps) {
+  const t = useLocale();
+
   return (
     <>
       {!!title && (
@@ -91,7 +94,7 @@ export function CourseList({
             />
           </SimpleGrid>
         ) : error ? (
-          <Text>Error in React Query, call de Tacobell</Text>
+          <Text>Woops, Error in React Query</Text>
         ) : (
           <VStack w="100%">
             {coursesArray &&
@@ -99,7 +102,7 @@ export function CourseList({
             coursesArray !== null ? (
               <SimpleGrid w="100%" spacing="4" columns={[1, 2, 2, 3]}>
                 {coursesArray.map(course => (
-                  <Link key={course.id} href={`community/course/${course.id}`}>
+                  <Link key={course.id} href={`/community/course/${course.id}`}>
                     <a>
                       <Box
                         className={styles.courseCard}
@@ -114,7 +117,7 @@ export function CourseList({
                               ? course.image
                               : '/assets/illustrations/CursoPhotoSource.svg'
                           }
-                          alt="Imagem do Curso"
+                          alt={t.courseList.thumbAlt}
                           w="100%"
                           h="55%"
                           borderTopRadius="2xl"
@@ -141,8 +144,8 @@ export function CourseList({
                               <Text color="green.500">
                                 {course.resumes_available !== null &&
                                 course.resumes_available > 0
-                                  ? `${course.resumes_available} Summaries`
-                                  : `No docs yet`}
+                                  ? `${course.resumes_available} ${t.courseList.manySummaries}`
+                                  : `${t.courseList.noSummary}`}
                               </Text>
                             </Flex>
 
@@ -152,9 +155,11 @@ export function CourseList({
                               </Box>
 
                               <Text color="green.500">
-                                {course.likes !== null || course.likes - 1 >= 1
-                                  ? `${course.likes} Likes`
-                                  : `No Likes`}
+                                {course.likes !== null && course.likes === 1
+                                  ? `${course.likes} ${t.courseList.like}`
+                                  : course.likes > 1
+                                  ? `${course.likes} ${t.courseList.like}s`
+                                  : `${t.courseList.noLikes}`}
                               </Text>
                             </Flex>
                           </Box>

@@ -11,12 +11,15 @@ import {
   SimpleGrid,
   Container as ChakraContainer,
 } from '@chakra-ui/react';
+import useLocale from '../../services/hooks/useLocale';
 
 export default function About() {
+  const t = useLocale();
+
   return (
     <>
       <Head>
-        <title>About | CourseBuddy</title>
+        <title>{t.about.about}</title>
       </Head>
 
       <ChakraContainer w="100%" mx="auto" my="8" px="8" maxWidth={1080}>
@@ -33,9 +36,9 @@ export default function About() {
                 fontWeight="black"
                 lineHeight="1"
               >
-                Imagine a Library made by the{' '}
+                {t.about.h1}{' '}
                 <Text as="span" color="purple.500">
-                  Worldwide community
+                  {t.about.h1_span}
                 </Text>{' '}
               </Heading>
 
@@ -46,7 +49,7 @@ export default function About() {
                   fontSize={['lg', 'lg', 'xl']}
                   lineHeight="1.2"
                 >
-                  Just like a "Youtube" for written files
+                  {t.about.strong}
                 </Text>
               </Box>
             </VStack>
@@ -67,7 +70,7 @@ export default function About() {
             lineHeight="1"
             align="center"
           >
-            "Every student is a potential content producer"
+            {t.about.quote}
           </Text>
           <Text
             align="end"
@@ -75,7 +78,7 @@ export default function About() {
             color="purple.500"
             fontWeight="medium"
           >
-            - Definitely not ALBERT EINSTEIN
+            {t.about.quote_author}
           </Text>
         </Box>
 
@@ -86,9 +89,7 @@ export default function About() {
             lineHeight="1.5"
             align="center"
           >
-            So with this statement and the "WILLIAM GLASSER's Pyramid" we notice
-            that a lot of students who are writing what they are studying on
-            Digital Notes or Summaries
+            {t.about.paragraph1}
           </Text>
           <Text
             mt="4"
@@ -98,10 +99,9 @@ export default function About() {
             align="center"
             color="purple.500"
           >
-            And maybe after the tests, and over the months, all that knowledge
-            written by the student may be left behind and{' '}
+            {t.about.paragraph2}{' '}
             <Text as="span" color="purple.200" fontWeight="bold">
-              will never be used by anyone again
+              {t.about.paragraph2_span}
             </Text>
           </Text>
         </Box>
@@ -121,7 +121,7 @@ export default function About() {
                   lineHeight="1.2"
                   fontSize={['xl', '2xl', '2xl']}
                 >
-                  This is where CourseBuddy comes into the picture!
+                  {t.about.subtitle}
                 </Text>
                 <Text
                   align="left"
@@ -130,8 +130,7 @@ export default function About() {
                   fontWeight="md"
                   fontSize={['lg', 'lg', 'xl']}
                 >
-                  A platform where students over the world can share and leave
-                  their knowledge to be appreciated by the future generations
+                  {t.about.paragraph3}
                 </Text>
               </Box>
             </VStack>
@@ -175,7 +174,7 @@ export default function About() {
               lineHeight="1"
               align="center"
             >
-              How it works:
+              {t.about.howItWorks}
             </Heading>
           </Flex>
 
@@ -185,11 +184,11 @@ export default function About() {
               lineHeight="1.2"
               color="purple.500"
             >
-              - Sign In to Create a{' '}
+              {t.about.bulletPoint1_part1}{' '}
               <Text as="span" fontWeight="bold" color="purple.100">
-                Course or a Topic{' '}
+                {t.about.bulletPoint1_span}{' '}
               </Text>
-              Thread
+              {t.about.bulletPoint1_part2}
             </Text>
 
             <Text
@@ -197,9 +196,9 @@ export default function About() {
               lineHeight="1.2"
               color="purple.500"
             >
-              - On "Thread's Page" link{' '}
+              {t.about.bulletPoint2}{' '}
               <Text as="span" color="purple.200" fontWeight="bold">
-                your material data
+                {t.about.bulletPoint2_span}
               </Text>
             </Text>
 
@@ -208,9 +207,9 @@ export default function About() {
               lineHeight="1.2"
               color="purple.500"
             >
-              - Then share your "Material Link" with the{' '}
+              {t.about.bulletPoint3}{' '}
               <Text as="span" color="purple.200" fontWeight="bold">
-                World Community!
+                {t.about.bulletPoint3_span}{' '}
               </Text>
             </Text>
           </VStack>

@@ -7,8 +7,11 @@ import { ActiveLink } from '../ActiveLink';
 import { SignInButton } from '../SignInButton';
 
 import styles from './header.module.scss';
+import useLocale from '../../services/hooks/useLocale';
 
 export default function Header() {
+  const t = useLocale();
+
   const isWideScreen = useBreakpointValue({
     base: false,
     lg: true,
@@ -44,7 +47,7 @@ export default function Header() {
               <ActiveLink activeClassName={styles.active} href="/search">
                 <a>
                   {isWideScreen ? (
-                    'Search'
+                    `${t.headers.search}`
                   ) : (
                     <Icon fontSize={26}>
                       <BiSearchAlt />
@@ -56,7 +59,7 @@ export default function Header() {
               <ActiveLink activeClassName={styles.active} href="/community">
                 <a>
                   {isWideScreen ? (
-                    'Community'
+                    `${t.headers.community}`
                   ) : (
                     <Icon fontSize={26}>
                       <BiWorld />
@@ -96,7 +99,7 @@ export default function Header() {
             <ActiveLink activeClassName={styles.active} href="/search">
               <a>
                 {isWideScreen ? (
-                  'Search'
+                  `${t.headers.search}`
                 ) : (
                   <Icon fontSize={26}>
                     <BiSearchAlt />
@@ -108,7 +111,7 @@ export default function Header() {
             <ActiveLink activeClassName={styles.active} href="/community">
               <a>
                 {isWideScreen ? (
-                  'Community'
+                  `${t.headers.community}`
                 ) : (
                   <Icon fontSize={26}>
                     <BiWorld />
