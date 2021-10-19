@@ -326,7 +326,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 
     const { data: currentUserData } = await supabase
       .from('users')
-      .select('id, name, email, avatar_url, slug_number')
+      .select('slug_number, name, email, avatar_url, slug_number')
       .eq('email', `${currentUserEmail}`)
       .single();
 

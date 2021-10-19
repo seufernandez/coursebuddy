@@ -19,7 +19,7 @@ import { NotFound } from '../NotFound';
 import useLocale from '../../services/hooks/useLocale';
 
 type CourseCardContentProps = {
-  id: string;
+  slug_number: string;
   name: string;
   image: string;
   likes: number;
@@ -102,7 +102,10 @@ export function CourseList({
             coursesArray !== null ? (
               <SimpleGrid w="100%" spacing="4" columns={[1, 2, 2, 3]}>
                 {coursesArray.map(course => (
-                  <Link key={course.id} href={`/community/course/${course.id}`}>
+                  <Link
+                    key={course.slug_number}
+                    href={`/community/course/${course.slug_number}`}
+                  >
                     <a>
                       <Box
                         className={styles.courseCard}

@@ -474,7 +474,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   params,
   req,
 }) => {
-  const { id } = params;
+  const { id: slug_number } = params;
   const session = await getSession({ req });
 
   const currentUserEmail = session?.user.email;
@@ -487,8 +487,10 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   const { data: singleCourseData } = await supabase
     .from('courses')
-    .select('id, name, image, likes, slug_number, description, tags')
-    .eq('id', String(id))
+    .select(
+      'id, slug_number, name, image, likes, slug_number, description, tags'
+    )
+    .eq('slug_number', String(slug_number))
     .single();
 
   const { data: resumesArray } = await supabase
@@ -499,7 +501,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     users: user_id ( name )
   `
     )
-    .eq('course_id', String(id));
+    .eq('course_id', String(singleCourseData.id));
 
   const { data: liked } = await supabase
     .from('course_likes')
@@ -509,8 +511,8 @@ export const getServerSideProps: GetServerSideProps = async ({
         users: user_id ( name )
         `
     )
-    .eq('course_id', String(id))
-    .eq('user_id', String(currentUser?.id))
+    .eq('course_id', String(singleCourseData.id))
+    .eq('user_id', String(currentUser.id))
     .single();
 
   const courseLiked = liked !== null;

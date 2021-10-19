@@ -34,7 +34,7 @@ export default async function handler(req, res) {
       case 'COMMUNITY-get-latest-courses':
         const { data: courses, error } = await supabase
           .from('courses')
-          .select('id, name, image, likes, resumes_available')
+          .select('slug_number, name, image, likes, resumes_available')
           .order('created_at', { ascending: false })
           .range(0, 2);
 
@@ -51,7 +51,7 @@ export default async function handler(req, res) {
         const { data: mostLikedCourses, error: mostLikedCoursesErr } =
           await supabase
             .from('courses')
-            .select('id, name, image, likes, resumes_available')
+            .select('slug_number, name, image, likes, resumes_available')
             .order('likes', { ascending: false });
 
         if (mostLikedCoursesErr) {
@@ -70,7 +70,7 @@ export default async function handler(req, res) {
           .from('course_likes')
           .select(
             `
-          courses: course_id (id, name, description, image, resumes_available, likes)
+          courses: course_id (slug_number, name, description, image, resumes_available, likes)
         `
           )
           .order('created_at', { ascending: false })
@@ -98,7 +98,7 @@ export default async function handler(req, res) {
         const { data: searchedCourses, error: searchedCoursesErr } =
           await supabase
             .from('courses')
-            .select('id, name, image, likes, resumes_available')
+            .select('slug_number, name, image, likes, resumes_available')
             .order('likes', { ascending: false })
             //   .or(`
             //   name.textSearch.${search},description.textSearch.${search},
