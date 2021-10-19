@@ -44,7 +44,7 @@ type ResumeProps = {
     name: string;
   };
   courses: {
-    id: string;
+    slug_number: number;
   };
 };
 
@@ -248,7 +248,7 @@ export default function Resume({
               </Box>
 
               <Flex align="center" justify="end" mt="4" mb="4" w="100%">
-                <Link href={`/community/course/${resume.courses.id}`}>
+                <Link href={`/community/course/${resume.courses.slug_number}`}>
                   <Button
                     size="md"
                     colorScheme="purple"
@@ -336,7 +336,7 @@ export const getServerSideProps: GetServerSideProps = async ({
         `
         id, name, description, image, link, tags, creator_id, created_at,
         users: creator_id ( name ),
-        courses: course_id ( id )
+        courses: course_id ( slug_number )
         `
       )
       .eq('id', String(id))
@@ -374,7 +374,7 @@ export const getServerSideProps: GetServerSideProps = async ({
       `
       id, name, description, image, link, tags, creator_id, created_at,
       users: creator_id ( name ),
-      courses: course_id ( id )
+      courses: course_id ( slug_number )
     `
     )
     .eq('id', String(id))
