@@ -148,7 +148,7 @@ export default function CoursePage({
       isClosable: true,
       position: 'top-right',
       onCloseComplete: () =>
-        router.push(`/community/resume/${response.data.newResumeId}`),
+        router.push(`/community/summary/${response.data.newResumeId}`),
     });
   };
 
@@ -501,7 +501,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     users: user_id ( name )
   `
     )
-    .eq('course_id', String(singleCourseData.id));
+    .eq('course_id', String(singleCourseData?.id));
 
   const { data: liked } = await supabase
     .from('course_likes')
@@ -511,8 +511,8 @@ export const getServerSideProps: GetServerSideProps = async ({
         users: user_id ( name )
         `
     )
-    .eq('course_id', String(singleCourseData.id))
-    .eq('user_id', String(currentUser.id))
+    .eq('course_id', String(singleCourseData?.id))
+    .eq('user_id', String(currentUser?.id))
     .single();
 
   const courseLiked = liked !== null;

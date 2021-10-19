@@ -110,7 +110,6 @@ export default function Community({ currentUser }: CommunityPageProps) {
       values,
       currentUserId,
     });
-    // console.log(response.data.newCourseId)
 
     onClose();
 
@@ -123,7 +122,7 @@ export default function Community({ currentUser }: CommunityPageProps) {
         isClosable: true,
         position: 'top-right',
         onCloseComplete: () =>
-          router.push(`/community/course/${response.data.newCourseId}`),
+          router.push(`/community/course/${response.data.newCourseNumberSlug}`),
       });
     }
   };

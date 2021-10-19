@@ -248,7 +248,7 @@ export default async function handler(req, res) {
             .send(`Error creating new Course Thread: ${error.message}`);
         }
 
-        res.status(200).json({ newCourseId: courseData.id });
+        res.status(200).json({ newCourseNumberSlug: courseData.slug_number });
         break;
 
       case 'course-create-resume':
