@@ -2,7 +2,7 @@ import { useQuery } from 'react-query';
 import { api } from '../api';
 
 type courseData = {
-  id: string;
+  slug_number: number;
   name: string;
   image: string;
   likes: number;

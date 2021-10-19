@@ -19,7 +19,7 @@ import { NotFound } from '../NotFound';
 import useLocale from '../../services/hooks/useLocale';
 
 type CourseCardContentProps = {
-  slug_number: string;
+  slug_number: number;
   name: string;
   image: string;
   likes: number;
