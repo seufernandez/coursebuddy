@@ -262,13 +262,18 @@ export default function Resume({
                   </Button>
                 </Link>
 
-                <ChakraLink href={resume.link} isExternal h="10">
+                <ChakraLink
+                  href={resume.link}
+                  isExternal
+                  h="10"
+                  _hover={{ textDecoration: 'none' }}
+                >
                   <Button
                     size="md"
                     colorScheme="purple"
                     color="purple.900"
                     _focus={{ boxShadow: 'none' }}
-                    _hover={{ bg: 'purple.550', textDecoration: 'none' }}
+                    _hover={{ bg: 'purple.550' }}
                   >
                     Go to Link
                     <Icon ml="2" mt="2" h="6" w="6" align="center">
