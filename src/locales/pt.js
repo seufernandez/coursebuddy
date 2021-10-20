@@ -53,17 +53,17 @@ export default {
     greeting: 'Olá,',
     yourLibrary: 'Sua Biblioteca',
 
-    likedCourses: 'Cursos Curtidos',
+    likedCourses: 'Tópicos Curtidos',
     likedResumes: 'Resumos Curtidos',
   },
 
   communityPage: {
     community: 'Comunidade',
-    latestCourses: 'Cursos Recentes',
-    topLiked: 'Cursos mais curtidos',
+    latestCourses: 'Tópicos Recentes',
+    topLiked: 'Tópicos mais curtidos',
 
     form: {
-      newCourse: 'Novo Curso',
+      newCourse: 'Novo Tópico/Curso',
       courseName: 'Nome do Curso',
       courseNameEx:
         'Ex: UFMG | História Bach | 3 Período | HISTÓRIA DO BRASIL II ',

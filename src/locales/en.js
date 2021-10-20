@@ -58,11 +58,11 @@ export default {
 
   communityPage: {
     community: 'Community',
-    latestCourses: 'Latest Courses',
-    topLiked: 'Top Liked Courses',
+    latestCourses: 'Latest Course Topics',
+    topLiked: 'Top Liked Topics',
 
     form: {
-      newCourse: 'New Course',
+      newCourse: 'New Topic/Course',
       courseName: 'Course Name',
       courseNameEx: 'Ex: MIT | Undergraduate Degree | Computer Science',
       courseDescription: 'Course Description',
