@@ -10,7 +10,8 @@ export default async function handler(req, res) {
   const session = await getSession({ req });
 
   if (req.method === 'GET') {
-    const { type, current_user_id, search, course_id } = req.headers;
+    const { type, current_user_id, search, course_id, course_slug_number } =
+      req.headers;
 
     switch (type) {
       case 'get-user-data':
@@ -214,6 +215,13 @@ export default async function handler(req, res) {
           : [];
 
         res.status(200).json(likedResumesArray);
+        break;
+
+      case 'COURSE-increment-course-view':
+        const { data } = await supabase.rpc('incrementcourseview', {
+          row_slug_number: course_slug_number,
+        });
+
         break;
 
       default:

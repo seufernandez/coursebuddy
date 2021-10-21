@@ -41,6 +41,7 @@ import {
   useGetTopLikedResumes,
 } from '../../../services/hooks/useResumes';
 import useLocale from '../../../services/hooks/useLocale';
+import { incrementCourseView } from '../../../services/hooks/useCourses';
 
 type CreateResumeData = {
   course_id: string;
@@ -104,6 +105,8 @@ export default function CoursePage({
   const [session] = useSession();
   const toast = useToast();
   const t = useLocale();
+
+  incrementCourseView(singleCourseData.slug_number);
 
   const currentUserId = currentUser?.id;
   const courseId = singleCourseData?.id;

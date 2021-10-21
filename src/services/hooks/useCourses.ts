@@ -100,3 +100,12 @@ export function useCourses() {
     }
   );
 }
+
+export async function incrementCourseView(courseSlug: number) {
+  const { data } = await api.get('/api/supaRequests', {
+    headers: {
+      type: 'COURSE-increment-course-view',
+      course_slug_number: courseSlug,
+    },
+  });
+}
