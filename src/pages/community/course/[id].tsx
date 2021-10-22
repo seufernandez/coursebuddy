@@ -22,7 +22,7 @@ import {
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import router from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getSession, useSession } from 'next-auth/client';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -106,7 +106,9 @@ export default function CoursePage({
   const toast = useToast();
   const t = useLocale();
 
-  incrementCourseView(singleCourseData.slug_number);
+  useEffect(() => {
+    incrementCourseView(singleCourseData.slug_number);
+  }, []);
 
   const currentUserId = currentUser?.id;
   const courseId = singleCourseData?.id;

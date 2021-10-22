@@ -221,7 +221,7 @@ export default async function handler(req, res) {
         const { data } = await supabase.rpc('incrementcourseview', {
           row_slug_number: course_slug_number,
         });
-
+        res.status(200).send(`success: another view added`);
         break;
 
       default:
