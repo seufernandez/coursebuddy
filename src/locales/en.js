@@ -1,8 +1,4 @@
 export default {
-  document: {
-    description: `Join with thousands of students over the World You'll find: Summaries, Notes, Articles, Classes, Tests and more than we can Imagine! Share knowledge and grow with us!`,
-  },
-
   headers: {
     search: 'Search',
     community: 'Community',

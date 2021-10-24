@@ -1,9 +1,4 @@
 export default {
-  document: {
-    description:
-      'Junte-se a milhares de estudantes pelo mundo! Resumos, anotações, provas, trabalhos, e muito mais Compartilhe conhecimento e cresca com a gente!',
-  },
-
   headers: {
     search: 'Pesquisar',
     community: 'Comunidade',
