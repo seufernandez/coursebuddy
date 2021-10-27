@@ -199,6 +199,7 @@ export default function CoursePage({
     <>
       <Head>
         <title>{course.name}</title>
+        <meta name="description" content={course.description} />
       </Head>
 
       <Box
