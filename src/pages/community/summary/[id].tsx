@@ -122,6 +122,7 @@ export default function Resume({
     <>
       <Head>
         <title>{resume.name}</title>
+        <meta name="description" content={resume.description} />
       </Head>
 
       <Flex

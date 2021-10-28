@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>{t.communityPage.community}</title>
+        <title>CourseBuddy</title>
       </Head>
 
       <Box
